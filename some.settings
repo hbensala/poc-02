@@ -1,0 +1,4 @@
+rootProject.name = 'mini-dc'
+
+include 'module-01'
+include 'module-02'
