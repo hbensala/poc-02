@@ -51,6 +51,10 @@ node() {
 			def modules_options = populateModules(allModules, inputPrefix)
 			options.addAll(modules_options)
 
+			allRepos = getAllRepos("AZ")
+			def repos_options = populateRepos(allRepos)
+			options.addAll(modules_options)
+
 			properties([
 			  parameters(
 			  	options
@@ -109,6 +113,37 @@ def populateModules(List<String> modules, String prefix = "input_"){
 	def options = []
 	modules.each {
 		def opt = booleanParam(defaultValue: true, name: prefix + it, description: '')
+		options.add(opt)
+	}
+
+	return options;
+}
+
+def getAllRepos(String azCredId){
+	echo "Getting repo from AZ"
+	def repos = []
+	echo ">> azCredId: ${azCredId}"
+
+	withCredentials([usernamePassword(credentialsId: azCredId, passwordVariable: 'AzPassword', usernameVariable: 'AzUser')]) {
+		// ------------------------------------------------------- Origin ACR (1 subscription = 1 ACR)
+		echo ">> AzUser: ${AzUser}"
+
+		sh "az login -u ${AzUser} -p \"${AzPassword}\" --allow-no-subscriptions"
+		// TODO Make subscription id dynamic retrieval
+		sh "az account set --subscription 6610e619-8822-4ed9-92eb-151007fd33c8"
+		
+		echo "Origin ACR: ${params.ACR}"
+	}
+
+	echo ">> repos: ${repos}"
+	return repos
+}
+
+
+def populateRepos(List<String> repos){
+	def options = []
+	repos.each {
+		def opt = booleanParam(defaultValue: true, name: it, description: '')
 		options.add(opt)
 	}
 
