@@ -51,9 +51,9 @@ node() {
 			def modules_options = populateModules(allModules, inputPrefix)
 			options.addAll(modules_options)
 
-			allRepos = getAllRepos("AZ")
-			def repos_options = populateRepos(allRepos)
-			options.addAll(modules_options)
+			// allRepos = getAllRepos("AZ")
+			// def repos_options = populateRepos(allRepos)
+			// options.addAll(modules_options)
 
 			properties([
 			  parameters(
@@ -80,6 +80,17 @@ node() {
 				versionMap[it] = (props.version).replace("x", "${currentBuild.number}")
 			}
 			echo "VersionMap: ${versionMap}"
+		}
+
+		if (modules.size()<=0) {
+			currentBuild.result = "ABORTED"
+			echo("At least one module must be selected.")
+            return
+		}
+
+
+		stage('Stage 03'){
+			echo "done"
 		}
 
 	} catch(err) {
@@ -112,7 +123,7 @@ def getAllModules(String path){
 def populateModules(List<String> modules, String prefix = "input_"){
 	def options = []
 	modules.each {
-		def opt = booleanParam(defaultValue: true, name: prefix + it, description: '')
+		def opt = booleanParam(defaultValue: false, name: prefix + it, description: '')
 		options.add(opt)
 	}
 
@@ -143,7 +154,7 @@ def getAllRepos(String azCredId){
 def populateRepos(List<String> repos){
 	def options = []
 	repos.each {
-		def opt = booleanParam(defaultValue: true, name: it, description: '')
+		def opt = booleanParam(defaultValue: false, name: it, description: '')
 		options.add(opt)
 	}
 
