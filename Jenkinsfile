@@ -88,20 +88,20 @@ node() {
 
 			// def script_output = sh(returnStdout: true, script: """
 			//      #!/bin/bash
-		 //        set -e
-		 //        set +x
-	  //           IP=\$(curl ifconfig.me)
-   //      		echo \$IP
+			//        set -e
+			//        set +x
+			//        IP=\$(curl ifconfig.me)
+			//        echo \$IP
 			// """)
 
 			// script_output = script_output.trim()
 			// IP = script_output
 
-   //  		echo "IP: ${IP}"
+   			// echo "IP: ${IP}"
 
 
 			def body = """
- Integer venenatis lacus ut justo convallis vulputate. Nam in ex vel diam tincidunt pretium faucibus eu arcu. Pellentesque eget tortor molestie sem vulputate convallis et eu leo. Phasellus dapibus vulputate nibh, sed volutpat libero venenatis ac. Curabitur venenatis, ipsum quis lobortis finibus, elit augue eleifend lectus, nec congue orci ligula at enim. Ut ultrices ac sapien at varius. Fusce non viverra libero. Vestibulum eget turpis id risus venenatis facilisis. Mauris ac efficitur ante. Integer dictum gravida velit non venenatis. Praesent a odio in justo imperdiet tristique. Phasellus fermentum commodo arcu quis rhoncus. Maecenas accumsan vulputate odio, a ornare risus cursus id. Fusce feugiat egestas felis vitae dapibus. Aliquam in mi id nunc finibus molestie vel sed erat. Aenean vel tellus id erat pulvinar iaculis ac quis dui.
+Integer venenatis lacus ut justo convallis vulputate. Nam in ex vel diam tincidunt pretium faucibus eu arcu. Pellentesque eget tortor molestie sem vulputate convallis et eu leo. Phasellus dapibus vulputate nibh, sed volutpat libero venenatis ac. Curabitur venenatis, ipsum quis lobortis finibus, elit augue eleifend lectus, nec congue orci ligula at enim. Ut ultrices ac sapien at varius. Fusce non viverra libero. Vestibulum eget turpis id risus venenatis facilisis. Mauris ac efficitur ante. Integer dictum gravida velit non venenatis. Praesent a odio in justo imperdiet tristique. Phasellus fermentum commodo arcu quis rhoncus. Maecenas accumsan vulputate odio, a ornare risus cursus id. Fusce feugiat egestas felis vitae dapibus. Aliquam in mi id nunc finibus molestie vel sed erat. Aenean vel tellus id erat pulvinar iaculis ac quis dui.
 
 Etiam imperdiet urna luctus rutrum placerat. Fusce a congue leo. Proin finibus ullamcorper turpis, quis viverra nulla gravida sit amet. Aliquam et mauris at lorem malesuada euismod. Fusce tincidunt est cursus, hendrerit ligula vel, semper eros. Praesent sit amet pretium elit, nec tempus nisl. Aliquam leo augue, dignissim in finibus sed, hendrerit in nisl. Nullam ut imperdiet mauris. Integer scelerisque maximus accumsan. Vivamus mattis velit in maximus vehicula. Curabitur luctus, odio at vehicula commodo, arcu lorem tristique quam, eu interdum nisl dolor eget quam. Nulla sed mi viverra, auctor ante a, vehicula urna. Phasellus malesuada sapien nec vehicula lobortis. Duis non mauris sit amet urna bibendum venenatis mollis lobortis mi. Phasellus sed tempus orci.
 
@@ -313,10 +313,10 @@ Morbi tempus enim et urna aliquet, in porta dolor pulvinar. Pellentesque habitan
 
 Sed egestas mollis eros in tempus. Nam sit amet molestie diam. Maecenas sagittis vestibulum augue vitae accumsan. Nulla id nisi elit. Suspendisse sed est vitae libero convallis eleifend in sit amet arcu. Duis aliquam suscipit diam vitae maximus. Praesent gravida odio vitae mi laoreet, ut varius velit consectetur. Nunc mollis lacus lacus, eu bibendum quam pellentesque non. Quisque pellentesque, lorem scelerisque malesuada porta, lorem nisi vulputate ante, quis nullam sodales. 
 			"""
-			def confluenceRMResultFix = sh script: "DATA=\$(echo '${body}''${body}''${body}''${body}''${body}''${body}''${body}''${body}''${body}''${body}') && curl -X PUT -d \"\$DATA\" ifconfig.me", returnStdout: true
+			def confluenceRMResultFix = sh script: "DATA=\$(echo '${body}''${body}''${body}''${body}''${body}') && curl -X PUT -d \"\$DATA\" ifconfig.me", returnStdout: true
 			echo "PUT New Result: ${confluenceRMResultFix}"
 
-			def confluenceRMResult = sh script: "curl -X PUT -d '${body}${body}${body}${body}${body}${body}${body}${body}${body}${body}' ifconfig.me", returnStdout: true
+			def confluenceRMResult = sh script: "curl -X PUT -d '${body}${body}${body}${body}${body}' ifconfig.me", returnStdout: true
 			echo "PUT Old Result: ${confluenceRMResult}"
 
 
