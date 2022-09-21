@@ -26,7 +26,7 @@ node() {
 
 	properties([
 	  parameters([
-	    string(name: 'submodule', defaultValue: ''),
+	    string(name: 'submodule', defaultValue: 'demo'),
         choice(choices: 'NonYes', , name: 'choice2'),
         choice(choices: 'NonYes', name: 'choice3')
         // activeChoiceParam('CHOICE-1') {
