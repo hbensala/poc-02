@@ -78,7 +78,8 @@ node() {
 			sh 'printenv'
 			echo "env: ${env}"
 			echo "submodule: ${submodule}"
-			sh "curl ifconfig.me"
+			sh 'IP=$(curl ifconfig.me)'
+			sh 'echo "IP: ${IP}"'
 
 			checkout scm
 
