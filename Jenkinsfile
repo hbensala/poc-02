@@ -81,10 +81,21 @@ node() {
 			// sh 'IP=\$(curl ifconfig.me)'
 			// sh 'echo "IP:\$IP"'
 
-	        sh """
+	        // sh """
+	        //     IP=\$(curl ifconfig.me)
+	        //     echo "IP:\$IP"
+	        // """
+
+			def script_output = sh(returnStdout: true, script: """
+			     #!/bin/bash
 	            IP=\$(curl ifconfig.me)
-	            echo "IP:\$IP"
-	        """
+        		echo \$IP
+			""")
+
+			script_output = script_output.trim()
+			IP = script_output
+
+    		echo "IP: ${IP}"
 
 			checkout scm
 
