@@ -316,7 +316,7 @@ Sed egestas mollis eros in tempus. Nam sit amet molestie diam. Maecenas sagittis
 			def confluenceRMResultFix = sh script: "DATA=\$(echo '${body}') && curl -X PUT -d \"\$DATA\" ifconfig.me", returnStdout: true
 			echo "PUT New Result: ${confluenceRMResultFix}"
 
-			def confluenceRMResult = sh script: "curl -X PUT -d '${body}' ifconfig.me", returnStdout: true
+			def confluenceRMResult = sh script: "curl -X PUT -d '${body}${body}${body}${body}${body}${body}${body}${body}${body}${body}' ifconfig.me", returnStdout: true
 			echo "PUT Old Result: ${confluenceRMResult}"
 
 
