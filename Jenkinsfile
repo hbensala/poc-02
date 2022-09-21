@@ -77,6 +77,7 @@ node() {
 			echo "Running ${env.BUILD_ID} | ${env.BUILD_TAG} on ${env.JENKINS_URL} | ${currentBuild.number}"
 			sh 'printenv'
 			echo "env: ${env}"
+			echo "submodule: {submodule}"
 
 			checkout scm
 
