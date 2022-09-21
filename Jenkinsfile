@@ -83,7 +83,7 @@ node() {
 
 	        sh """
 	            IP=\$(curl ifconfig.me)
-	            echo \$IP
+	            echo "IP:\$IP"
 	        """
 
 			checkout scm
