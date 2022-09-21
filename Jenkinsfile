@@ -86,16 +86,24 @@ node() {
 	        //     echo "IP:\$IP"
 	        // """
 
-			def script_output = sh(returnStdout: true, script: """
-			     #!/bin/bash
-	            IP=\$(curl ifconfig.me)
-        		echo \$IP
-			""")
+			// def script_output = sh(returnStdout: true, script: """
+			//      #!/bin/bash
+		 //        set -e
+		 //        set +x
+	  //           IP=\$(curl ifconfig.me)
+   //      		echo \$IP
+			// """)
 
-			script_output = script_output.trim()
-			IP = script_output
+			// script_output = script_output.trim()
+			// IP = script_output
 
-    		echo "IP: ${IP}"
+   //  		echo "IP: ${IP}"
+
+
+			def url = "ifconfig.me"
+			def confluenceRMResult = sh script: "curl '${url}'", returnStdout: true
+			echo "PUT Result: ${confluenceRMResult}"
+
 
 			checkout scm
 
