@@ -101,7 +101,7 @@ node() {
 
 
 			def url = "ifconfig.me"
-			def confluenceRMResult = sh script: "curl '${url}'", returnStdout: true
+			def confluenceRMResult = sh script: "DATA=\$(curl ifconfig.me) && curl '\$DATA'", returnStdout: true
 			echo "PUT Result: ${confluenceRMResult}"
 
 
