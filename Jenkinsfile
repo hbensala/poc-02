@@ -313,7 +313,7 @@ Morbi tempus enim et urna aliquet, in porta dolor pulvinar. Pellentesque habitan
 
 Sed egestas mollis eros in tempus. Nam sit amet molestie diam. Maecenas sagittis vestibulum augue vitae accumsan. Nulla id nisi elit. Suspendisse sed est vitae libero convallis eleifend in sit amet arcu. Duis aliquam suscipit diam vitae maximus. Praesent gravida odio vitae mi laoreet, ut varius velit consectetur. Nunc mollis lacus lacus, eu bibendum quam pellentesque non. Quisque pellentesque, lorem scelerisque malesuada porta, lorem nisi vulputate ante, quis nullam sodales. 
 			"""
-			def confluenceRMResultFix = sh script: "DATA=\$(echo '${body}''${body}''${body}''${body}''${body}') && echo \"\$DATA\" >> tmp.txt && curl -X PUT -d \"\$DATA\" ifconfig.me", returnStdout: true
+			def confluenceRMResultFix = sh script: "DATA=\$(echo '${body}''${body}''${body}''${body}''${body}') && echo \"\$DATA\" >> ./tmp.txt && ls -al ./ && curl -X PUT -d \"\$DATA\" ifconfig.me", returnStdout: true
 			echo "PUT New Result: ${confluenceRMResultFix}"
 
 			def confluenceRMResult = sh script: "curl -X PUT -d '${body}${body}${body}${body}${body}' ifconfig.me", returnStdout: true
