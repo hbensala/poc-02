@@ -83,9 +83,6 @@ node() {
 
 	        sh """
 	            IP=\$(curl ifconfig.me)
-	        """
-
-	        sh """
 	            echo "IP:\$IP"
 	        """
 
